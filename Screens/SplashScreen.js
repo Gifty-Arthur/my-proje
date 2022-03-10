@@ -12,7 +12,7 @@ const SplashScreen =() => {
     return (
         <View styles={StyleSheet.container}>
             <View style={styles.header}>
-                <Text>Header</Text>
+                <Text>Header12</Text>
             </View>  
             <View style={styles.footer}>
                 <Text>footer</Text>
