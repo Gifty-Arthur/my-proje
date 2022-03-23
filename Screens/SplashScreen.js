@@ -7,38 +7,44 @@ import {
     StyleSheet,
 } from 'react-native';
 
+// always put the Dimeension declaration above the component function
+// also if you want to access the height you don't do this
+// const {height} = Dimensions.get('screen');
 
-const SplashScreen =() => {
+// you do this instead
+const height = Dimensions.get('screen').height
+
+// same as the Login screen, do this instead
+// and remember components always start with a capital letter
+export default function SplashScreen ({navigation})  {
     return (
-        <View styles={StyleSheet.container}>
+        <View style={styles.container}>
             <View style={styles.header}>
                 <Text>Header12</Text>
             </View>  
-            <View style={styles.footer}>
-                <Text>footer</Text>
-             </View>     
+            {/* button to navigate to the login screen */}
+            <Button title="Go to Login screen" onPress={() => navigation.navigate("Login")}/>  
             
         </View>
     );
 };
 
 
-export default SplashScreen;
-
-const {height} = Dimensions.get('screen');
-const height_new = height * 0.28;
+// this is not necessary
+// const height_new = height * 0.28;
 
  
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#eeff41',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   
   header:{
-    flex:2, 
-    justifyContent: 'center',
-    alignItems:'center'
+    // justifyContent: 'center',
+    // alignItems:'center'
 },
 
 footer:{
@@ -50,8 +56,13 @@ footer:{
     paddingHorizontal:30
 },
 new:{
-    width: height_new,
-    height: height_new
+    // instead of this
+    // width: height_new,
+    // height: height_new
+
+    // do this
+    width: height * 0.28,
+    height: height * 0.28
 },
 
 title:{

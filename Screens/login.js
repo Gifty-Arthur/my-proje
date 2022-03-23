@@ -4,24 +4,25 @@ import {
   View,
   Button,
   StyleSheet,
-  TouchableOpacity,
-  
-
+  Dimensions,
 } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
 
-const login = () => { 
+const height = Dimensions.get('screen').height
+
+// do this instead
+export default function Login ({navigation}) { 
   return(
     <View style={styles.container}>
       <View style={styles.text_header}>
-        <Text style={styles.text.header}>Welcome!</Text>
+        <Text style={styles.text_header}>Welcome!</Text>
         
       </View>
       <View style={styles.footer}>
       
-        <Text style={styles.text.footer}>Email</Text>
+        <Text style={styles.text_footer}>Email</Text>
         
-        <View style={style.action}>
+        <View style={styles.action}>
         <FontAwesome
          name="user"
           size={24}
@@ -30,15 +31,17 @@ const login = () => {
 
         </View>
       </View>
+
+      <Button title=" Go to Splash screen" onPress={() => navigation.navigate("Splash")}/>  
     </View>
   )
 }
 
-export default function App() {
+// this is wrong, you should export the function you ceated above instead.
+// so don't do this
+// export default function App() {
   
-};
-
-
+// };
  
 const styles = StyleSheet.create({
   container: {
@@ -47,13 +50,11 @@ const styles = StyleSheet.create({
     
   },
   header:{
-    flex: 1,
     justifyContent: 'flex-end',
     paddingHorizontal: 20,
     paddingBottom: 40
   },
   footer: {
-    flex: 2,
     backgroundColor: 'white',
     borderTopLeftRadius:40,
     borderTopRightRadius:40,
@@ -79,7 +80,6 @@ const styles = StyleSheet.create({
     paddingBottom: 5
   },
   textInput:{
-    flex: 1,
     marginTop: Platform.OS == 'ios' ? 0 : -12,
     paddingLeft: 30,
     color: 'black',
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   new:{
-    width: height_new,
-    height: height_new
+    width: height * 0.28,
+    height: height * 0.28
 },
 image: {
   flex: 1,
